@@ -15,10 +15,10 @@ class Bar:
     s = random.randint(1, 5) / 100
     current = 0
 
-    def box(box):
-        Bar.b = box
-    def dot(dot):
-        Bar.d = dot
+    def bar(char):
+        Bar.b = char
+    def dot(char):
+        Bar.d = char
     def color(color):
         Bar.c = color
     def speed(min, max, divider):
