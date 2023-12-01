@@ -17,7 +17,7 @@ class Bar:
 
     def bar(char):
         Bar.b = char
-    def dot(char):
+    def fill(char):
         Bar.d = char
     def color(color):
         Bar.c = color
