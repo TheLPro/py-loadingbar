@@ -2,10 +2,10 @@ from termcolor import colored
 from time import sleep
 import os
 import random
+from multiprocessing import Process
 
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
-
     
 class Bar:
         
@@ -24,7 +24,7 @@ class Bar:
     def speed(min, max, divider):
         Bar.speed = random.randint(min, max) / divider
 
-    def update(percent, last):
+    def update(last, percent):
         current = last
         for i in range(percent - last + 1):
             if current == 0 or current == 1:
@@ -39,4 +39,4 @@ class Bar:
             current += 1
             if current == 100:
                 return True
-Bar.update(100, 0)
+    
