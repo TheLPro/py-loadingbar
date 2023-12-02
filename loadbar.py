@@ -39,7 +39,7 @@ class Bar:
             current += 1
             if current == 100:
                 return True
-class Arrows:
+class Arrow:
 
     # ← ↖ ↑ ↗ → ↘ ↓ ↙
     
@@ -47,16 +47,27 @@ class Arrows:
     c = "white"
     s = 0.2
     current = 0
+    active = False
 
     def color(color):
-        Bar.c = color
+        Arrow.c = color
     def speed(speed):
-        Bar.s = speed
+        Arrow.s = speed
 
-    def update(stage):
-        current = Bar.current
-        for i in range(stage - last + 1):
-            cls()
-            print(stages[current])
-            sleep(Bar.s)
-            current += 1
+    def start():
+        active = True
+    def stop():
+        active = False
+        
+    while active:
+        if current == 8:
+            current = 0
+        cls()
+        print(colored(stages[current], c))
+        sleep(s)
+        current += 1
+    while not active:
+        cls()
+        print(colored(stages[0], c))
+        sleep(s)
+        current = 0

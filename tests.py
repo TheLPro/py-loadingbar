@@ -1,4 +1,4 @@
-from loadbar import Bar
+from loadbar import Arrow
 from time import sleep
 from multiprocessing import Process
 
@@ -8,16 +8,12 @@ def loadthis():
 def loadthat():
     sleep(2)
     print("Loaded that")
-b = Bar
-b.bar("o")
-b.fill("-")
+b = Arrow
 b.color("light_magenta")
-b.speed(1, 1, 10000000000)
+b.speed(.1)
 
 this = Process(target=loadthis)
 that = Process(target=loadthat)
 
-this.start()
-b.update(0, 50)
-that.start()
-b.update(50, 100)
+b.start()
+b.stop()
