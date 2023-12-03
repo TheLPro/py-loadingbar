@@ -12,9 +12,10 @@ class Bar:
     b = "█"
     d = "•"
     c = "light_green"
+    tc = "white"
     s = random.randint(1, 5) / 100
-    prefix = "Loading"
-    suffix = "%"
+    pf = "Loading"
+    sf = "%"
     current = 0
 
     def bar(char):
@@ -23,12 +24,14 @@ class Bar:
         Bar.d = char
     def color(color):
         Bar.c = color
+    def textcolor(color):
+        Bar.tc = color
     def speed(min, max, divider):
         Bar.speed = random.randint(min, max) / divider
     def prefix(prefix):
-        Bar.prefix = prefix
+        Bar.pf = prefix
     def suffix(suffix):
-        Bar.suffix = suffix
+        Bar.sf = suffix
 
     def update(percent):
         current = Bar.current
@@ -40,42 +43,78 @@ class Bar:
                 boxes = round(current / 2)
                 dots = round((100 - current) / 2)
             cls()
-            print(colored(f"{Bar.prefix} {current + 1}{Bar.suffix} {Bar.b*boxes}{Bar.d*dots}", Bar.c))
+            print(colored(f"{Bar.pf} {current + 1}{Bar.sf} {Bar.b*boxes}{Bar.d*dots}", Bar.c))
             sleep(Bar.s)
             current += 1
             if current == 100:
                 return True
-class Arrow:
+class Stage:
 
     # ← ↖ ↑ ↗ → ↘ ↓ ↙
     
     stages = ["←", "↖", "↑", "↗", "→", "↘", "↓", "↙"]
-    c = "white"
+    c = "light_green"
+    tc = "white"
     s = 0.1
-    p = "Loading"
+    pf = "Loading"
     current = 0
     max = len(stages)
 
     def color(color):
-        Arrow.c = color
+        Stage.c = color
+    def textcolor(color):
+        Stage.tc = color
     def speed(speed):
-        Arrow.s = speed
+        Stage.s = speed
     def prefix(prefix):
-        Arrow.p = prefix
+        Stage.pf = prefix
     def chars(chars):
-        Arrow.stages = chars
-        Arrow.max = len(chars)
+        Stage.stages = chars
+        Stage.max = len(chars)
         
     def update(percent):
-        current = Arrow.current
-        wm = Arrow.max - 1
+        current = Stage.current
+        wm = Stage.max - 1
         for i in range(percent - current):
             for i in range(percent - current):
                 cls()
-                print(colored(f"{Arrow.p} {Arrow.stages[current]}", Arrow.c))
-                sleep(Arrow.s)
+                print(colored(f"{Stage.pf} {Stage.stages[current]}", Stage.c))
+                sleep(Stage.s)
                 current += 1
                 if current == wm:
                     current = 0
-        Arrow.current = current
+        Stage.current = current
         return True
+    
+class Count:
+        c = "light_green"
+        tc = "white"
+        s = random.randint(1, 5) / 200
+        pf = "Loading"
+        sf = ""
+        
+        current = 0
+        max = 100
+        
+        def color(color):
+            Count.c = color
+        def textcolor(color):
+            Count.tc = color
+        def speed(min, max, divider):
+            Count.s = random.randint(min, max) / divider
+        def prefix(prefix):
+            Count.pf = prefix
+        def suffix(suffix):
+            Count.sf = suffix
+            
+        def update(percent):
+            current = Count.current
+            for i in range(percent - current):
+                cls()
+                print(colored(f"{Count.pf} {current + 1}{Count.sf}", Count.c))
+                sleep(Count.s)
+                current += 1
+                if current == Count.max:
+                    return True
+            Count.current = current
+            return True

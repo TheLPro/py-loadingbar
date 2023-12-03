@@ -8,14 +8,10 @@ def loadthis():
 def loadthat():
     sleep(2)
     print("Loaded that")
-b = load.Bar
+b = load.Count
 
-b.color("red")
-b.bar("▲")
-b.fill("▼")
-b.prefix("UWU")
-b.suffix("OwO")
-b.speed(3, 8, 100)
+b.color("light_red")
+b.prefix("")
 
 this = Process(target=loadthis)
 that = Process(target=loadthat)
