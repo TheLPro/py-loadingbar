@@ -11,9 +11,7 @@ def loadthat():
 b = load.Bar
 
 b.color("light_red")
-b.speed(1, 3, 100)
-b.prefix("Loading")
-b.suffix("...")
+
 
 this = Process(target=loadthis)
 that = Process(target=loadthat)
