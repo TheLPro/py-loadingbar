@@ -1,9 +1,17 @@
-from termcolor import colored
 from time import sleep
 import os
 import random
 from multiprocessing import Process
 
+try:
+    from termcolor import colored
+except ImportError:
+    print("Installing termcolor...")
+    os.system("pip install termcolor --quiet")
+    from termcolor import colored
+    print(colored("Termcolor installed, please rerun the script", "white", attrs=["bold"]))
+    exit()
+    
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
     

@@ -17,5 +17,5 @@ this = Process(target=loadthis)
 that = Process(target=loadthat)
 bar = Process(target=b.update, args=(100,))
 
-bar.start()
+load.wipe()
 this.start()
