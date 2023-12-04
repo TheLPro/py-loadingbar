@@ -8,14 +8,13 @@ def loadthis():
 def loadthat():
     sleep(2)
     print("Loaded that")
-b = load.Bar
+b = load.Stage
 
 b.color("light_red")
-
+b.chars(["←", "↖", "↑", "↗", "→", "↘", "↓", "↙"])
 
 this = Process(target=loadthis)
 that = Process(target=loadthat)
-bar = Process(target=b.update, args=(100,))
 
-bar.start()
 this.start()
+b.update(20)

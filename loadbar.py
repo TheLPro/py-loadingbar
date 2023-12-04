@@ -11,7 +11,6 @@ except ImportError:
     from termcolor import colored
     print(colored("Termcolor installed, please rerun the script", "white", attrs=["bold"]))
     exit()
-    
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
     
@@ -72,8 +71,8 @@ class Stage:
         Stage.c = color
     def textcolor(color):
         Stage.tc = color
-    def speed(speed):
-        Stage.s = speed
+    def speed(min, max, divider):
+        Stage.s = random.randint(min, max) / divider
     def prefix(prefix):
         Stage.pf = prefix
     def chars(chars):
@@ -84,13 +83,12 @@ class Stage:
         current = Stage.current
         wm = Stage.max - 1
         for i in range(percent - current):
-            for i in range(percent - current):
-                cls()
-                print(colored(f"{Stage.pf} {Stage.stages[current]}", Stage.c))
-                sleep(Stage.s)
-                current += 1
-                if current == wm:
-                    current = 0
+            cls()
+            print(colored(f"{Stage.pf} {Stage.stages[current]}", Stage.c))
+            sleep(Stage.s)
+            current += 1
+            if current == wm:
+                current = 0
         Stage.current = current
         return True
     
